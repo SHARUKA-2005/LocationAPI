@@ -1,47 +1,28 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-import requests
+from flask import Flask, render_template, jsonify
+import pickle
+import json
 
 app = Flask(__name__)
 
-@app.route('/check_safety', methods=['POST'])
-def check_safety():
-    data = request.json
-    latitude = data['latitude']
-    longitude = data['longitude']
+# Load crime prediction model
+try:
+    with open("crime_model_one.pkl", "rb") as model_file:
+        crime_model = pickle.load(model_file)
+    print("✅ Model loaded successfully!")
+except Exception as e:
+    print("❌ Error loading model:", e)
 
-    # Dummy response (Replace this with ML model later)
-    danger_zone = False
-    if latitude > 12.95 and latitude < 12.99:  # Example condition
-        danger_zone = True
+# Serve crime locations from a JSON file
+@app.route("/crime-data")
+def crime_data():
+    with open("crime_data.json") as f:
+        data = json.load(f)
+    return jsonify(data)
 
-    return jsonify({"danger": danger_zone})
+# Render homepage
+@app.route("/")
+def home():
+    return render_template("index.html")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
-
-
-
-
-API_KEY = "5b3ce3597851110001cf6248c897f0ec156b4d188acdd3218c284e08"
-
-
-# Simulated "unsafe" location (North Chennai)
-lat = 13.1200  # Latitude of unsafe place
-lon = 80.2700  # Longitude of unsafe place
-
-# Example safer destination (Marina Beach, Chennai) for redirection
-safe_lat = 13.0500
-safe_lon = 80.2824
-
-# OpenRouteService API for directions
-url = f"https://api.openrouteservice.org/v2/directions/foot-walking?api_key={API_KEY}&start={lon},{lat}&end={safe_lon},{safe_lat}"
-
-response = requests.get(url)
-
-if response.status_code == 200:
-    data = response.json()
-    print("Route to safer place:")
-    print(data)
-else:
-    print("Error fetching route:", response.text)

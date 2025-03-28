@@ -1,0 +1,17 @@
+[
+    {"lat": 8.7652, "lng": 78.1345, "description": "Robbery hotspot"},
+    {"lat": 8.7601, "lng": 78.1289, "description": "Frequent thefts"},
+    {"lat": 8.7580, "lng": 78.1405, "description": "High assault rates"},
+    {"lat": 8.7675, "lng": 78.1320, "description": "Snatching incidents"},
+    {"lat": 8.7623, "lng": 78.1256, "description": "Vehicle theft area"},
+    {"lat": 8.7688, "lng": 78.1374, "description": "Burglary cases reported"},
+    {"lat": 8.7695, "lng": 78.1299, "description": "Drug-related crimes"},
+    {"lat": 8.7556, "lng": 78.1380, "description": "Street fights & assaults"},
+    {"lat": 8.7709, "lng": 78.1265, "description": "Pickpocketing zone"},
+    {"lat": 8.7573, "lng": 78.1325, "description": "Unlit area - risk at night"},
+    {"lat": 8.7650, "lng": 78.1412, "description": "Frequent police complaints"},
+    {"lat": 8.7629, "lng": 78.1355, "description": "Gang activity reported"},
+    {"lat": 8.7715, "lng": 78.1220, "description": "Chain snatching incidents"},
+    {"lat": 8.7588, "lng": 78.1360, "description": "Fraud & scam reports"},
+    {"lat": 8.7667, "lng": 78.1275, "description": "High number of ATM frauds"}
+]
